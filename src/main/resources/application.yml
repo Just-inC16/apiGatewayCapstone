@@ -3,27 +3,11 @@ spring:
     name: api-gateway
   cloud:
     gateway:
-      routes:
-        - id: customer
-          uri: lb://customer
-          predicates:
-            - Path=/api/v1/customers/** 
-        - id: reservation
-          uri: lb://reservation
-          predicates:
-            - Path=/api/v1/reservations/** 
-        - id: payment
-          uri: lb://hotelManagement
-          predicates:
-            - Path=/api/v1/hotelManagements/** 
-        - id: payment
-          uri: lb://payment
-          predicates:
-            - Path=/api/v1/payments/** 
-        - id: notification
-          uri: lb://notification
-          predicates:
-            - Path=/api/v1/notifications/** 
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+  
 server:
   port: 8085
 
